@@ -98,6 +98,8 @@
         </ul>
     </div>
 
+    <div id="chatbot"></div>
+
     <script>
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
@@ -143,6 +145,69 @@
             const text = letters.charAt(Math.floor(Math.random() * letters.length));
             ctx.fillText(text, mouseX, mouseY);
         });
+    </script>
+
+    <!-- Include React and ReactDOM -->
+    <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+
+    <!-- Chatbot Component -->
+    <script type="text/babel">
+        const { useState } = React;
+        const { Card, CardContent } = window["@/components/ui/card"];
+        const { Button } = window["@/components/ui/button"];
+        const { Send } = window["lucide-react"];
+
+        const Chatbot = () => {
+            const [messages, setMessages] = useState([
+                { role: "assistant", content: "Hello! How can I assist you today?" },
+            ]);
+            const [input, setInput] = useState("");
+
+            const sendMessage = async () => {
+                if (!input.trim()) return;
+                const newMessages = [...messages, { role: "user", content: input }];
+                setMessages(newMessages);
+                setInput("");
+
+                try {
+                    const response = await fetch("/api/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ messages: newMessages }),
+                    });
+                    const data = await response.json();
+                    setMessages([...newMessages, { role: "assistant", content: data.reply }]);
+                } catch (error) {
+                    console.error("Error fetching AI response:", error);
+                }
+            };
+
+            return (
+                <Card className="fixed bottom-5 right-5 w-80 shadow-lg p-4 bg-white border rounded-2xl">
+                    <CardContent className="h-64 overflow-y-auto flex flex-col space-y-2">
+                        {messages.map((msg, i) => (
+                            <div key={i} className={`text-${msg.role === "user" ? "right" : "left"}`}>{msg.content}</div>
+                        ))}
+                    </CardContent>
+                    <div className="flex mt-2">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder="Type your message..."
+                            className="flex-1 p-2 border rounded-l-xl"
+                        />
+                        <Button onClick={sendMessage} className="rounded-r-xl">
+                            <Send size={16} />
+                        </Button>
+                    </div>
+                </Card>
+            );
+        };
+
+        ReactDOM.render(<Chatbot />, document.getElementById('chatbot'));
     </script>
 </body>
 </html>
