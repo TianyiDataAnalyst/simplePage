@@ -40,6 +40,20 @@
             margin: 0 auto;
             text-align: left;
         }
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+                height: auto;
+                padding: 20px;
+            }
+            .content {
+                width: 100%;
+                padding: 10px;
+            }
+            .services {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -48,6 +62,7 @@
     </div>
     <div class="content">
         <h1>Welcome to Our AI Consulting Firm</h1>
+        <p>Email us at: <a href="mailto:AI@timetrek.org">Ai@timetrek.org</a></p>
         <p>We are a leading AI consulting firm based in Ottawa, dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
         <p>Our services include:</p>
         <div class="services">
@@ -61,7 +76,6 @@
         </div>
         <p>We are proud to partner with Algonquin College to bring cutting-edge AI solutions to our clients. Our collaboration includes leveraging the expertise from Algonquin College's AI Software Development and GIS programs.</p>
         <p>Contact us today to learn how we can help your business thrive in the age of AI.</p>
-        <p>Email us at: <a href="mailto:Ai@timetrek.org">Ai@timetrek.org</a></p>
     </div>
 
     <script>
