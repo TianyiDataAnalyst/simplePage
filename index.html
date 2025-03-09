@@ -6,8 +6,8 @@
     <title>AI Consulting Firm</title>
     <style>
         body {
-            background-color: black;
-            color: green;
+            background-color: blue;
+            color: white;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             margin: 0;
@@ -70,10 +70,10 @@
         }
 
         function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillStyle = 'rgba(0, 0, 139, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#0F0';
+            ctx.fillStyle = '#FFF';
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
@@ -89,6 +89,13 @@
         }
 
         setInterval(draw, 33);
+
+        document.addEventListener('mousemove', (event) => {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, mouseX, mouseY);
+        });
     </script>
 </body>
 </html>
