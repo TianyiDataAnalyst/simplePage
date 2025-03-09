@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Consulting Firm</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .matrix canvas {
+            display: block;
+        }
+    </style>
 </head>
 <body>
+    <div class="matrix">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
     <h1>Welcome to Our AI Consulting Firm</h1>
-    <p>We are a leading AI consulting firm dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
+    <p>We are a leading AI consulting firm based in Ottawa, dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
     <p>Our services include:</p>
     <ul>
         <li>AI Strategy Development</li>
@@ -16,7 +45,46 @@
         <li>AI Integration and Deployment</li>
         <li>Ongoing AI Support and Maintenance</li>
     </ul>
+    <p>We are proud to partner with Algonquin College to bring cutting-edge AI solutions to our clients.</p>
     <p>Contact us today to learn how we can help your business thrive in the age of AI.</p>
     <p>Email us at: <a href="mailto:Ai@timetrek.org">Ai@timetrek.org</a></p>
+
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+    </script>
 </body>
 </html>
