@@ -9,16 +9,16 @@
             background-color: black;
             color: green;
             font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
+            overflow-x: hidden;
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: grid;
             grid-template-columns: 1fr 3fr 1fr;
             align-items: center;
             text-align: center;
         }
         .matrix {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -34,6 +34,7 @@
             color: white;
             padding: 20px;
             border-radius: 10px;
+            max-width: 100%;
         }
         .services {
             width: 40%;
@@ -62,7 +63,7 @@
     </div>
     <div class="content">
         <h1>Welcome to Our AI Consulting Firm</h1>
-        <p>Email us at: <a href="mailto:AI@timetrek.org">Ai@timetrek.org</a></p>
+        <p>Email us at: <a href="mailto:Ai@timetrek.org">Ai@timetrek.org</a></p>
         <p>We are a leading AI consulting firm based in Ottawa, dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
         <p>Our services include:</p>
         <div class="services">
@@ -85,7 +86,8 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzéèàçùâêîôûäëïöüñçあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン한글顾天义';
+
         const fontSize = 16;
         const columns = canvas.width / fontSize;
 
