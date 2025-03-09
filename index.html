@@ -6,8 +6,8 @@
     <title>AI Consulting Firm</title>
     <style>
         body {
-            background-color: blue;
-            color: white;
+            background-color: black;
+            color: green;
             font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             margin: 0;
@@ -30,6 +30,10 @@
         }
         .content {
             grid-column: 2;
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -70,10 +74,10 @@
         }
 
         function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 139, 0.05)';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#FFF';
+            ctx.fillStyle = '#0F0';
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
