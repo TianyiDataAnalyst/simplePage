@@ -12,10 +12,9 @@
             overflow: hidden;
             margin: 0;
             height: 100vh;
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
             align-items: center;
-            flex-direction: column;
             text-align: center;
         }
         .matrix {
@@ -29,25 +28,30 @@
         .matrix canvas {
             display: block;
         }
+        .content {
+            grid-column: 2;
+        }
     </style>
 </head>
 <body>
     <div class="matrix">
         <canvas id="matrixCanvas"></canvas>
     </div>
-    <h1>Welcome to Our AI Consulting Firm</h1>
-    <p>We are a leading AI consulting firm based in Ottawa, dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
-    <p>Our services include:</p>
-    <ul>
-        <li>AI Strategy Development</li>
-        <li>Machine Learning Model Development</li>
-        <li>Data Analysis and Visualization</li>
-        <li>AI Integration and Deployment</li>
-        <li>Ongoing AI Support and Maintenance</li>
-    </ul>
-    <p>We are proud to partner with Algonquin College to bring cutting-edge AI solutions to our clients.</p>
-    <p>Contact us today to learn how we can help your business thrive in the age of AI.</p>
-    <p>Email us at: <a href="mailto:Ai@timetrek.org">Ai@timetrek.org</a></p>
+    <div class="content">
+        <h1>Welcome to Our AI Consulting Firm</h1>
+        <p>We are a leading AI consulting firm based in Ottawa, dedicated to helping businesses harness the power of artificial intelligence to drive innovation and growth. Our team of experts specializes in providing tailored AI solutions that meet the unique needs of each client.</p>
+        <p>Our services include:</p>
+        <ul>
+            <li>AI Strategy Development</li>
+            <li>Machine Learning Model Development</li>
+            <li>Data Analysis and Visualization</li>
+            <li>AI Integration and Deployment</li>
+            <li>Ongoing AI Support and Maintenance</li>
+        </ul>
+        <p>We are proud to partner with Algonquin College to bring cutting-edge AI solutions to our clients. Our collaboration includes leveraging the expertise from Algonquin College's AI Software Development and GIS programs.</p>
+        <p>Contact us today to learn how we can help your business thrive in the age of AI.</p>
+        <p>Email us at: <a href="mailto:Ai@timetrek.org">Ai@timetrek.org</a></p>
+    </div>
 
     <script>
         const canvas = document.getElementById('matrixCanvas');
